@@ -1,0 +1,14 @@
+﻿@{
+    if (Session["Admin"] != null)
+    {
+        Layout = "~/Views/Shared/AdminLayout.cshtml";
+    }
+    else if(Session["User"] != null)
+    {
+        Layout = "~/Views/Shared/AuthenticatedLayout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+}

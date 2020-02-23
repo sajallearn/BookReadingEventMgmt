@@ -1,0 +1,5 @@
+C:\Users\sajalgarg\source\repos\BookReadingEventManagement2\Shared\bin\Debug\Shared.dll
+C:\Users\sajalgarg\source\repos\BookReadingEventManagement2\Shared\bin\Debug\Shared.pdb
+C:\Users\sajalgarg\source\repos\BookReadingEventManagement2\Shared\obj\Debug\Shared.csproj.CoreCompileInputs.cache
+C:\Users\sajalgarg\source\repos\BookReadingEventManagement2\Shared\obj\Debug\Shared.dll
+C:\Users\sajalgarg\source\repos\BookReadingEventManagement2\Shared\obj\Debug\Shared.pdb

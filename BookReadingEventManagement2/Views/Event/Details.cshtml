@@ -1,0 +1,171 @@
+﻿@model BookReadingEventManagement2.Models.EventDetailViewModel
+@using BookReadingEventManagement2.Models;
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Event</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Location)
+        </dd>
+        @{
+            if (Model.Duration != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Duration)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Duration)
+                </dd>
+            }
+        }
+
+        @{
+            if (Model.Description != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Description)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+            }
+        }
+
+        @{
+            if (Model.OtherDetails != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.OtherDetails)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.OtherDetails)
+                </dd>
+            }
+        }
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InviteCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InviteCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserFullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserFullName)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Invites)
+        </dt>
+        <dd>
+
+            @{
+                foreach (string invite in Model.Invites)
+                {
+
+                    @invite <span>  </span>
+
+                }
+            }
+
+        </dd>
+
+    </dl>
+</div>
+<div>
+    <h4>Comments</h4>
+    @{ 
+        foreach (CommentViewModel commentViewModel in Model.CommentList)
+        {
+            <div class="form-group">
+                @Html.Label(commentViewModel.UserFullName)
+                <div class="form-group">
+                    <p>@commentViewModel.Data</p>
+                    <i>Created On <span>@commentViewModel.Date</span></i>
+                </div>
+            </div>
+        }
+    }
+            <div>
+                @{
+                    if (Model.CurrentUser != null)
+                    {
+                        using (Html.BeginForm("CommentPost", "event"))
+                        {
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.CurrentUser, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Comment.Data, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Comment.Data, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Create" class="btn btn-default" />
+                                </div>
+                            </div>
+                            
+                        }
+
+                    }
+                }
+
+            </div>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Home")
+</p>
